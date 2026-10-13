@@ -38,6 +38,8 @@ The axial fan selected for this project is the Noctua NF-A12x25 PWM, a cooling c
 
 ### 3.1. Dimensions
 - **Width x Height x Depth:** 120 x 120 x 25 mm
+- **Diameter:** 114 mm
+- **Hub Diameter:** 50 mm  
 - **Mounting hole spacing:** 105 x 105 mm
 
 ### 3.2. Performance
