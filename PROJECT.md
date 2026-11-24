@@ -16,7 +16,18 @@
 ### 6.1. Relevant variables of the axial fan
 ### 6.2. Proposed instrumentation for measuring and data acquisition
 ### 6.3. ISO 5801:2019 application to the axial fan
-## 7. Design
+## 7. Design of the axial fan
+### 7.1 Specification and dimensionless parameters
+#### 7.1.1 Reference fan and operating point
+#### 7.1.2 Dimensionless parameters (D1)
+### 7.2 Geometry description of all the parts of the axial fan
+### 7.3 Materials and characteristics. Justification
+### 7.4 Mean line analysis (D2)
+#### 7.4.1 Velocity triangles
+#### 7.4.2 Cascade geometry and diffusion factor
+#### 7.4.3 Preliminary blade angles
+#### 7.4.4 Sensitivity and limitations
+### 7.5 Conclusions and next steps
 
 ---
 
@@ -154,9 +165,11 @@ To test the design of the fan and validate the CFD results we must design the ex
 
 <img width="677" height="450" alt="image" src="https://github.com/user-attachments/assets/c88665eb-651f-4430-bcef-309e3c462940" />
 
-## 1. Specification and dimensionless parameters
+# 7. Design of the axial fan
 
-### 1.1 Reference fan and operating point
+## 7.1 Specification and dimensionless parameters
+
+### 7.1.1 Reference fan and operating point
 
 The selected fan is a 120 mm axial fan for electronic cooling, with a nine-blade rotor and PWM speed control.
 
@@ -185,7 +198,7 @@ The operating point is selected from matched pressure and flow data at approxima
 
 For the initial lossless Euler calculation, the measured-type static pressure specification is used as a proxy for ideal total pressure rise, $\Delta p_{0,E}\approx\Delta p_s$. This is a modelling assumption, not a physical equivalence. The static fluid-output power is $Q\Delta p_s=0.1888$ W. Actual shaft efficiency cannot be determined from the rated electrical input alone.
 
-### 1.2 Dimensionless parameters (D1)
+### 7.1.2 Dimensionless parameters (D1)
 
 The definitions follow the course notebooks, using the assumed rotor diameter in Section 2 and angular velocity $\Omega=2\pi N/60=209.440$ rad/s.
 
@@ -200,7 +213,7 @@ The definitions follow the course notebooks, using the assumed rotor diameter in
 
 The Cordier diagram in D1 locates the provisional point at $(D_s,\Omega_s)=(1.902,3.562)$, for comparison with axial-machine design ranges. The location is tentative because of the pressure assumption and does not establish optimum efficiency.
 
-## 2. Geometry description of all the parts of the axial fan
+## 7.2 Geometry description of all the parts of the axial fan
 
 | Component / parameter | Geometry or dimension | Basis |
 |---|---|---|
@@ -227,7 +240,7 @@ $$A=\pi(r_t^2-r_h^2)=0.008244\,\mathrm{m^2},\qquad s_m=\frac{2\pi r_m}{Z}=30.726
 
 The hub-to-tip ratio is 0.439. The preliminary mean-section chord and blade angles are evaluated in Section 4; these are design estimates, not measured dimensions of the commercial fan. Detailed spanwise geometry will be determined during Release 2.
 
-## 3. Materials and characteristics. Justification
+## 7.3 Materials and characteristics. Justification
 
 The following material descriptions are based on the manufacturer's specifications. The justification is an engineering interpretation of their function; numerical mechanical properties are not assumed without grade-specific data.
 
@@ -242,9 +255,9 @@ The following material descriptions are based on the manufacturer's specificatio
 
 The small tip clearance is particularly relevant to material selection because deformation of the impeller can reduce the available clearance, while a larger clearance increases leakage. No structural or material-property validation is claimed at this stage.
 
-## 4. Mean line analysis (D2)
+## 7.4 Mean line analysis (D2)
 
-### 4.1 Velocity triangles
+### 7.4.1 Velocity triangles
 
 Assuming incompressible flow, uniform axial velocity and no inlet swirl, the mean-section relations are:
 
@@ -264,7 +277,7 @@ The relative angles are positive magnitudes measured from the axial direction; t
 
 The relative velocity ratio is $w_2/w_1=0.8581$, above the conventional De Haller threshold of 0.72. The local flow and work coefficients are $c_x/U=0.166696$ and $c_{\theta2}/U=0.146196$, respectively. They use different definitions from the global D1 coefficients.
 
-### 4.2 Cascade geometry and diffusion factor
+### 7.4.2 Cascade geometry and diffusion factor
 
 For the mean-section cascade, $s=30.726$ mm, $l$ is the chord, and $\sigma=l/s$ is solidity. The D2 model uses the Lieblein diffusion factor and a drag coefficient $C_D=0.02$:
 
@@ -287,11 +300,11 @@ Adopting $DF\leq0.5$ gives a maximum pitch-to-chord ratio of 4.9663 and a minimu
 | 25 | 0.8137 | 0.2305 | 0.2704 | 15,489 |
 | 30 | 0.9764 | 0.2158 | 0.2068 | 18,587 |
 
-![D2 diffusion factor and lift coefficient versus chord](outputs/D2_DF_CL_vs_cuerda.png)
+![D2 diffusion factor and lift coefficient versus chord]
 
-The 9 mm chord is a rounded aerodynamic candidate satisfying both D2 criteria. A 20 mm chord is retained as a geometric alternative for investigation, not as a confirmed commercial blade dimension. Full numerical results are available in the [D2 case table](outputs/D2_Noctua_casos.csv).
+The 9 mm chord is a rounded aerodynamic candidate satisfying both D2 criteria. A 20 mm chord is retained as a geometric alternative for investigation, not as a confirmed commercial blade dimension. Full numerical results are available in the [D2 case table].
 
-### 4.3 Preliminary blade angles
+### 7.4.3 Preliminary blade angles
 
 Using the Carter deviation correlation and zero-incidence assumption implemented in D2, the estimated metal angles and camber are:
 
@@ -303,7 +316,7 @@ Using the Carter deviation correlation and zero-incidence assumption implemented
 
 These are preliminary circular-arc-style geometric estimates; the low chord Reynolds numbers and the sensitivity of the deviation correlation limit their reliability. They are not final CAD inputs.
 
-### 4.4 Sensitivity and limitations
+### 7.4.4 Sensitivity and limitations
 
 | Assumed ideal pressure / static pressure | Outlet relative angle (°) | Minimum chord (mm) | Chord for $C_L=1$ (mm) |
 |---:|---:|---:|---:|
@@ -313,7 +326,7 @@ These are preliminary circular-arc-style geometric estimates; the low chord Reyn
 
 The sensitivity factors are hypothetical, not measured efficiencies. The calculations satisfy the internal Euler and cascade balance checks in D2, but do not establish the actual fan performance. Radial variation, tip leakage, profile losses, and three-dimensional effects are not resolved by this mean-line model.
 
-## Conclusions and next steps
+## 7.5 Conclusions and next steps
 
 Release 1 establishes the operating point, dimensionless parameters, preliminary component geometry, material rationale and mean-section cascade estimates. Remaining geometry measurements should be recorded when available, particularly rotor and hub diameters, blade dimensions and motor supports. The pressure assumption must be reviewed before finalising the rotor design.
 
@@ -327,3 +340,18 @@ Release 2 will address radial analysis, mean-line corrections, blade and rotor d
 4. Noctua, [Technical backgrounds and manufacturing challenges](https://www.noctua.at/en/expertise/tech/nf-a12x25-technical-backgrounds).
 5. Noctua, [NF-A12x25 PWM — downloads](https://www.noctua.at/en/products/nf-a12x25-pwm/downloads).
 6. Dixon, S. L. and Hall, C. A., *Fluid Mechanics and Thermodynamics of Turbomachinery*, 7th ed., 2014, chapters 3 and 5 (equation numbering as used in D2).
+
+# 7. Design of the axial fan
+## 7.1 Specification and dimensionless parameters
+### 7.1.1 Reference fan and operating point
+### 7.1.2 Dimensionless parameters (D1)
+## 7.2 Geometry description of all the parts of the axial fan
+## 7.3 Materials and characteristics. Justification
+## 7.4 Mean line analysis (D2)
+### 7.4.1 Velocity triangles
+### 7.4.2 Cascade geometry and diffusion factor
+### 7.4.3 Preliminary blade angles
+### 7.4.4 Sensitivity and limitations
+## 7.5 Conclusions and next steps
+
+
