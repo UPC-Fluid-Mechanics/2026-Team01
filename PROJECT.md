@@ -374,27 +374,3 @@ The sensitivity factors are hypothetical, not measured efficiencies. The calcula
 Release 1 establishes the operating point, dimensionless parameters, preliminary component geometry, material rationale and mean-section cascade estimates. Remaining geometry measurements should be recorded when available, particularly rotor and hub diameters, blade dimensions and motor supports. The pressure assumption must be reviewed before finalising the rotor design.
 
 Release 2 will address radial analysis, mean-line corrections, blade and rotor design, and expected overall performance. No definitive radial loading or final CAD geometry is selected in this second release.
-
-## References
-
-1. Noctua, [NF-A12x25 PWM — product specifications](https://www.noctua.at/en/products/nf-a12x25-pwm/specifications).
-2. Noctua, [NF-A12x25 PWM — technical specification](https://cdn.noctua.at/media/72046e88/Noctua%20NF-A12x25%20PWM%20Specification.pdf?download=true), p. 7, P/Q data (as transcribed in D1 and D2).
-3. Course notebooks: [D1 — Fundamentals and dimensional analysis](D1_fundamentals_and_dimensional_analysis.ipynb), [D2 — Mean line analysis and 2D cascade](D2_mean_line_analysis_and_2d_cascade.ipynb).
-4. Noctua, [Technical backgrounds and manufacturing challenges](https://www.noctua.at/en/expertise/tech/nf-a12x25-technical-backgrounds).
-5. Noctua, [NF-A12x25 PWM — downloads](https://www.noctua.at/en/products/nf-a12x25-pwm/downloads).
-6. Dixon, S. L. and Hall, C. A., *Fluid Mechanics and Thermodynamics of Turbomachinery*, 7th ed., 2014, chapters 3 and 5 (equation numbering as used in D2).
-
-# 7. Design of the axial fan
-## 7.1 Specification and dimensionless parameters
-### 7.1.1 Reference fan and operating point
-### 7.1.2 Dimensionless parameters (D1)
-## 7.2 Geometry description of all the parts of the axial fan
-## 7.3 Materials and characteristics. Justification
-## 7.4 Mean line analysis (D2)
-### 7.4.1 Velocity triangles
-### 7.4.2 Cascade geometry and diffusion factor
-### 7.4.3 Preliminary blade angles
-### 7.4.4 Sensitivity and limitations
-## 7.5 Conclusions and next steps
-
-
