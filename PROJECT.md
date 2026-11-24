@@ -13,7 +13,9 @@
 ### 4.2. Examples from the web
 ## 5. CFD planning
 ## 6. Experimentation
-
+### 6.1. Relevant variables of the axial fan
+### 6.2. Proposed instrumentation for measuring and data acquisition
+### 6.3. ISO 5801:2019 application to the axial fan
 ---
 
 ## 1. Team Organization
@@ -138,5 +140,10 @@ A velocity inlet will be defined with the mentioned axial velocity. Our idea is 
 
 
 Each of these types of simulations will be performed through an iterative process. We will do our first runs using the designed parameters and will subsequently iterate until reaching the desired performance outcomes. We will also perform Grid Convergence Studies to determine if our results are converged. 
+
+## 6. Experimentation
+
+<img width="777" height="550" alt="image" src="https://github.com/user-attachments/assets/c88665eb-651f-4430-bcef-309e3c462940" />
+
 
 
