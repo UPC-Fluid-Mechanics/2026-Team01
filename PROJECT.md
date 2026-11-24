@@ -260,10 +260,11 @@ Summary list of instruments used:
 
 A. Fan Installation Categories and Project Selection (Clauses 5 & 6)
 UNE-EN ISO 5801:2019 classifies fan test configurations into four standardized installation categories depending on the presence of ducting at the inlet and outlet:
-Category A: Free inlet and free outlet (no ducts connected to either side).
-Category B: Free inlet and ducted outlet (standardized airway on the discharge side).
-Category C: Ducted inlet and free outlet (standardized airway on the suction side).
-Category D: Ducted inlet and ducted outlet (standardized airways on both sides).
+- Category A: Free inlet and free outlet (no ducts connected to either side).
+- Category B: Free inlet and ducted outlet (standardized airway on the discharge side).
+- Category C: Ducted inlet and free outlet (standardized airway on the suction side).
+- Category D: Ducted inlet and ducted outlet (standardized airways on both sides).
+
 Category for our project:
 Since the GPU fan is tested without a heat sink or attached ducts (drawing air from an open ambient environment and discharging directly to the atmosphere), our mounting configuration corresponds to Installation Category A (Free inlet, free outlet), tested using a Type 2 / Category A Inlet Chamber.
 
