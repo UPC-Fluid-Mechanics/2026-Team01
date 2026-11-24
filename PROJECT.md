@@ -216,19 +216,21 @@ The NI-9205 has a maximum selectable input range of ±10 V. Therefore, the nomin
 - Data-acquisition architecture
 
 | Component | Function |
-|---|---:|
+|---|---|
 | cDAQ-9174 | USB chassis with four module slots and internal counters |
 | NI-9211 | Thermocouple acquisition with cold-junction compensation |
 | NI-9205 | Analogue voltage acquisition for humidity, shunt voltage and appropriately conditioned signals |
 | NI-9401 | Digital interface for tachometer pulses |
 | Computer | Data logging, instrument communication and post-processing |
 
+A scheme lay out for understanding the connectivity of the quantity mesurments and the data aquisition devices is presented:
 
+<img width="677" height="450" alt="image" src="https://github.com/user-attachments/assets/c88665eb-651f-4430-bcef-309e3c462940" />
 
 
 ### 6.3. ISO 5801:2019 application to the axial fan
 
-<img width="677" height="450" alt="image" src="https://github.com/user-attachments/assets/c88665eb-651f-4430-bcef-309e3c462940" />
+
 
 # 7. Design of the axial fan
 
