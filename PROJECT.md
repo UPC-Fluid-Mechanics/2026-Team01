@@ -252,7 +252,7 @@ Summary list of instruments used:
 | Barometric pressure ($p_a$) | **Vaisala PTB110** | $500\text{ to }1100\text{ hPa}$ ($50\text{ to }110\text{ kPa}$), $\pm 0.3\text{ hPa}$ at $20^\circ\text{C}$ |
 | Air temperature ($T_a$) | **Pico Technology SE046** Type T Thermocouple | $0^\circ\text{C}\text{ to }50^\circ\text{C}$, $\pm 0.2\%$ of reading and $\pm 0.5^\circ\text{C}$ |
 | Relative humidity ($h_{\text{rel}}$) | **Vaisala HMP60** Capacitive RH Probe | $0\text{ to }100\%\text{ RH}$, $\pm 3.0\%\text{ RH}$ |
-| Rotational speed ($n$) | Internal PWM Tachometer ($2\text{ pulses/rev}$) + cDAQ | $0\text{ to }3000\text{ rpm}$ |
+| Rotational speed ($n$) | Fan tachometer output, 2 pulses/revolution, with pull-up resistor and cDAQ counter acquisition.  | $0\text{ to }3000\text{ rpm}$ |
 | Voltage / Current ($V, I$) | **Keysight E36312A** DC Supply + $0.1\,\Omega$ Shunt | $12\text{ V}$ / $0\text{ to }0.5\text{ A}$ |
 | Shaft torque ($\tau$) *(optional)* | **FUTEK TFF400** Reaction Torque Sensor | $0\text{ to }0.05\text{ N}\cdot\text{m}$, $\pm 0.2\%\text{ FS}$ |
 
