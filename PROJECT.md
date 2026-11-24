@@ -159,7 +159,50 @@ To test the design of the fan and validate the CFD results we must design the ex
 
 ### 6.1. Relevant variables of the axial fan
 
+<img width="517" height="255" alt="Screenshot 2026-11-24 231256" src="https://github.com/user-attachments/assets/9e46e2d2-ae13-40c1-ba58-3044317076a9" />
+
+<img width="571" height="458" alt="Screenshot 2026-11-24 231434" src="https://github.com/user-attachments/assets/5ac8492c-7c1f-42aa-8a94-26781bfb776b" />
+
+
 ### 6.2. Proposed instrumentation for measuring and data acquisition
+- Flow rate measurement
+Airflow will be determined using a rounded-entry nozzle system installed in an inlet chamber. A multi-nozzle arrangement is proposed so that different active throat areas can be selected over the operating range.
+This approach is consistent with the Category A inlet-chamber method introduced in E3. The nozzle profile, throat dimensions, installation and discharge-coefficient calculation must follow the applicable requirements of ISO 5801 Annex A. A generic bellmouth opening cannot be treated as a standardised measuring nozzle without this verification.
+The final calculation will use the complete expression applicable to the selected geometry, including the relevant coefficients, corrections and validity limits. Nozzle number and dimensions will be established during detailed bench design.
+To measure the airflow, the air passes through a nozzle, it accelerates and its static pressure decreases. The resulting pressure difference is related to the mass flow rate through the nozzle. Measuring this pressure difference, together with nozzle geometry and air density, allows the airflow to be calculated. ISO 5801 provides the applicable methods in Annex A.
+
+- Pressure Measurement
+Two independent differential-pressure channels are required:
+-- Differential pressure across the nozzle system, used to calculate airflow.
+-- Chamber pressure relative to ambient, used to determine fan pressure according to the selected configuration.
+The WIKA CPC2000 is proposed as a candidate instrument for steady-state differential-pressure measurement, operating in measurement mode. It contains an internal pressure sensor, display and USB/RS-232 communication. Pressure is transmitted from the bench through pneumatic tubing; no additional pressure transmitter is required in series with the instrument. It will only be needed to connect to a computer so we can share the readings of the instrument.
+For the fan-pressure channel, the 0–1 mbar configuration, equivalent to 0–100 Pa, is a candidate. Its specified accuracy is 0.3% of span, equivalent to 0.3 Pa. WIKA defines this specification with a coverage factor of k=2, subject to the conditions stated in its documentation. This is an instrument specification, not the uncertainty of the complete pressure-measurement chain.
+One CPC2000 provides one differential-pressure measurement, not two independent simultaneous channels. So we would need two CPC2000 to capture the two independent differential-pressure channels.
+
+For atmospheric pressure, ambient barometric pressure (pa) is measured using a Vaisala PTB110 electronic barometer, which employs a silicon capacitive absolute pressure sensor (BAROCAP). This instrument covers an absolute pressure range of 500 to 1100 hPa (50,000 to 110,000 Pa), fully encompassing expected laboratory atmospheric variations. According to the manufacturer's datasheet, it provides a total accuracy of ±0.3 hPa (±30 Pa) at 20 °C and ±0.6 hPa (±60 Pa) across the 0 to 40 °C temperature range, incorporating internal temperature compensation between -40 °C and +60 °C. For seamless data acquisition, the barometer provides a linear 0 to 5 V DC analog output signal wired directly into an analog input channel of the NI cDAQ system, enabling continuous automated logging of barometric pressure alongside temperature and humidity.
+Air Temperature Measurement
+Air temperature will be measured using a Type T thermocouple with an exposed welded junction. A specific candidate is the Pico Technology SE046, which has PTFE insulation and a 1 m cable. Its exposed junction is suitable for gas-temperature measurements. Has a ±0.2% accuracy of reading and ±0.5 °C.
+In the proposed NI-based architecture, the thermocouple will be connected to an NI-9211 thermocouple input module, with suitable Type T connections and correct polarity. The NI-9211 provides cold-junction compensation and thermocouple measurement functions.
+
+Relative humidity measurement
+Relative humidity will be measured using a Vaisala HMP60 probe. The proposed configuration uses a 0–5 V analogue output connected to an NI-9205 voltage-input module.
+For this output configuration, the probe requires an 8–28 V DC supply; a regulated 12 V supply is therefore suitable, provided that the wiring and electrical references are correctly implemented.
+The manufacturer specifies a typical humidity accuracy of ±3 percentage points of relative humidity over 0–90% RH at 0–40 °C.
+
+Rotational speed (n) and electrical power (Pel)
+If the Noctua motor and electronics are used, rotational speed will be obtained from the tachometer output. The tachometer output and PWM control input are separate signals.
+Noctua specifies an open-collector tachometer output with two pulses per revolution. A pull-up resistor to a voltage compatible with the acquisition input is therefore required. The tachometer wire must not be described as an independently generated 5 V square-wave output.
+For two pulses per revolution:
+
+where 𝑛 is in rpm and 𝑓 is in Hz.
+
+The signal will be routed through an NI-9401 digital module to a counter in the cDAQ chassis. A fixed accuracy of ±2 rpm is not claimed at this stage. The achievable uncertainty depends on the counting method, timebase, observation interval and signal quality.
+A Keysight E36312A bench power supply is proposed to power the fan. The nominal supply setting does not replace a measurement of the actual voltage at the fan terminals.
+Current may be determined using a precision shunt resistor and a differential voltage measurement:
+
+For the proposed 0.1 Ω shunt, a current of 0.10 A produces a voltage drop of 10 mV. The acquisition range and wiring must therefore be suitable for low-level voltage measurements.
+The shunt tolerance alone does not determine current-measurement uncertainty. The voltage-input offset, gain error, noise, resistor temperature dependence and connections must also be considered.
+The NI-9205 has a maximum selectable input range of ±10 V. Therefore, the nominal 12 V fan supply must not be measured directly on this range. A characterised voltage divider, a suitable higher-range input or a separate voltage-measuring instrument is required. Fan terminal voltage will be measured through a characterised voltage divider connected to an NI-9205 input. Current will be determined from the differential voltage across the shunt resistor. Divider ratio, resistor specifications, grounding and measurement uncertainty will be established during detailed design.
 
 ### 6.3. ISO 5801:2019 application to the axial fan
 
