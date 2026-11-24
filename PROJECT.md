@@ -77,16 +77,19 @@ Three different types of simulations will be executed to aid and verify our desi
 
 ### 5.1. Airfoil simulations:
 CAD description:
+
 The CAD will be the selected airfoil with it’s design characteristics. Including profile (NACA 65), chord measurements and design length.
 
 Mesh description:
+
 The mesh will be designed balancing two factors. On one side we aim to obtain the necessary accuracy and definition of results to verify and aid our design. On the other side we want to optimize computational cost so that we are more nimble in our iterative design process. This is why we will discretize different parts of our mesh.
 
 Surrounding our airfoil and following it’s closest flow downstream we will create a region refinement. This zone will use level 4 refinement, and will allow us to understand how the flow behaves after interacting with the fan. 
 
 It will also be necessary to refine the surface of the airfoil and the boundary layer around it. For the surface we will use level 5. For the boundary layer we will use a changing refinement, in SimScale this tool is called “Inflate Boundary Layer”, and will allow us to create refinement that decreases when getting further away from our airfoil. 
 
-Boundary conditions
+Boundary conditions:
+
 The most important boundary condition of these simulations will be the free-stream velocity and it’s direction. The axial velocity in the fan is 1,537m/s. Due to the chosen angle of attack the components of our velocity boundary condition will be the following. 
 Vx = 1,516 m/s
 Vy = 0.2527 m/s
@@ -97,13 +100,16 @@ The airfoil itself will have a wall boundary condition (No-slip). We will use Wa
 
 
 ### 5.2. Cascade Simulations:
-CAD description: 
+
+CAD description:
+
 This second simulation will use the same CAD model as the first one. Our airfoil of choice with all it’s characteristics. In this case we will introduce the airfoil at the stagger angle (77.896°). 
 
-Mesh description
+Mesh description:
+
 The mesh for this simulation will be similar to the mesh described before, but due to the direction of our flow we will modify the geometry of the region refinement. 
 
-Boundary conditions
+Boundary conditions:
 
 Because we aim to understand the effects on the airflow of the cascade of airfoils we will have to set up periodic boundary conditions on the top and bottom of our domain. This way the influence on the state of the flow produced by one fin affects the next, therefore providing us with information on the full rotation of our fan. 
 
@@ -116,13 +122,17 @@ Symmetrys will be applied in the front and back sections of our domain. The same
 In this case we will use the pressure outlet boundary condition in the most downstream section of our domain. 
 
 ### 5.3. Full model simulations:
+
 CAD description:
+
 The full model simulations will incorporate the CAD of the full fan. This includes casing, center fan structure and the designed 9 airfoils.
 
-Mesh description
+Mesh description:
+
 Meshing will be developed with the same objectives in mind, but due to the complexity of this simulations it will also require an iterative process to understand the shortcomings of our initial meshes. 
 
-Boundary conditions
+Boundary conditions:
+
 A velocity inlet will be defined with the mentioned axial velocity. Our idea is to iterate with this velocity to find our ideal performance points. A pressure outlet will also be defined. No-slip conditions will be applied on our airfoils and fan structures, therefore setting them up as walls. The rotating speed of the reference frame will also be applied, therefore simulation the movement in our fan.
 
 
