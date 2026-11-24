@@ -159,9 +159,16 @@ To test the design of the fan and validate the CFD results we must design the ex
 
 ### 6.1. Relevant variables of the axial fan
 
-<img width="517" height="255" alt="Screenshot 2026-11-24 231256" src="https://github.com/user-attachments/assets/9e46e2d2-ae13-40c1-ba58-3044317076a9" />
+To select all the instrumental devices for the measurements and the data aquisition must be taken into account from the BEP:
 
-<img width="571" height="458" alt="Screenshot 2026-11-24 231434" src="https://github.com/user-attachments/assets/5ac8492c-7c1f-42aa-8a94-26781bfb776b" />
+| Quantity | Reference Value |
+| :--- | :--- |
+| Reference volumetric flow rate | 45.6 m³/h = 0.012667 m³/s |
+| Published static-pressure rise | 14.91 Pa |
+| Reference rotational speed | 2,000 rpm |
+| Status | Selected study point; not a demonstrated best efficiency point |
+
+With these reference variables we can select the quantities to be measured with our measurement devices.
 
 | Quantity | Symbol and Unit | Purpose |
 | :--- | :--- | :--- |
@@ -237,6 +244,17 @@ A scheme lay out for understanding the connectivity of the quantity mesurments a
 
 <img width="677" height="450" alt="image" src="https://github.com/user-attachments/assets/c88665eb-651f-4430-bcef-309e3c462940" />
 
+Summary list of instruments used:
+
+| Measured Quantity | Selected Instrument | Specification |
+| :--- | :--- | :--- |
+| Differential pressure ($\Delta p_n, p_{e3}$) | **WIKA CPC2000** (Low-pressure module) $\times 2$ | $0\text{ to }100\text{ Pa}$ ($0\text{ to }1\text{ mbar}$), $\pm 0.3\%\text{ FS}$ |
+| Barometric pressure ($p_a$) | **Vaisala PTB110** | $500\text{ to }1100\text{ hPa}$ ($50\text{ to }110\text{ kPa}$), $\pm 0.3\text{ hPa}$ at $20^\circ\text{C}$ |
+| Air temperature ($T_a$) | **Pico Technology SE046** Type T Thermocouple | $0^\circ\text{C}\text{ to }50^\circ\text{C}$, $\pm 0.2\%$ of reading and $\pm 0.5^\circ\text{C}$ |
+| Relative humidity ($h_{\text{rel}}$) | **Vaisala HMP60** Capacitive RH Probe | $0\text{ to }100\%\text{ RH}$, $\pm 3.0\%\text{ RH}$ |
+| Rotational speed ($n$) | Internal PWM Tachometer ($2\text{ pulses/rev}$) + cDAQ | $0\text{ to }3000\text{ rpm}$ |
+| Voltage / Current ($V, I$) | **Keysight E36312A** DC Supply + $0.1\,\Omega$ Shunt | $12\text{ V}$ / $0\text{ to }0.5\text{ A}$ |
+| Shaft torque ($\tau$) *(optional)* | **FUTEK TFF400** Reaction Torque Sensor | $0\text{ to }0.05\text{ N}\cdot\text{m}$, $\pm 0.2\%\text{ FS}$ |
 
 ### 6.3. ISO 5801:2019 application to the axial fan
 
