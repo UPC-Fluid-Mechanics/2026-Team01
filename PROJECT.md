@@ -145,6 +145,11 @@ Each of these types of simulations will be performed through an iterative proces
 To test the design of the fan and validate the CFD results we must design the experimental procedure to evaluate our axial fan and see if it is in compliance with the UNE-EN ISO 5801:2019. For these release we do not need to construct the whole test-bench, we need to define the following points: 
 
 ### 6.1. Relevant variables of the axial fan
+The selection of the material and the devices have a direct relation between the following varaibles:
+<img width="517" height="255" alt="image" src="https://github.com/user-attachments/assets/4b427761-38ab-442a-b4a4-2295a720d0fd" />
+With these reference variables we can select the quantities to be measured with our measurement devices.
+<img width="671" height="558" alt="image" src="https://github.com/user-attachments/assets/e607d8df-877a-471a-994d-a708ac96dfe3" />
+
 
 ### 6.2. Proposed instrumentation for measuring and data acquisition
 
