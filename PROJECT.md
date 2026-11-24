@@ -191,12 +191,14 @@ For atmospheric pressure, ambient barometric pressure (pa) is measured using a V
 Air temperature will be measured using a Type T thermocouple with an exposed welded junction. A specific candidate is the Pico Technology SE046, which has PTFE insulation and a 1 m cable. Its exposed junction is suitable for gas-temperature measurements. Has a ±0.2% accuracy of reading and ±0.5 °C.
 In the proposed NI-based architecture, the thermocouple will be connected to an NI-9211 thermocouple input module, with suitable Type T connections and correct polarity. The NI-9211 provides cold-junction compensation and thermocouple measurement functions.
 
-Relative humidity measurement
+- Relative humidity measurement:
+
 Relative humidity will be measured using a Vaisala HMP60 probe. The proposed configuration uses a 0–5 V analogue output connected to an NI-9205 voltage-input module.
 For this output configuration, the probe requires an 8–28 V DC supply; a regulated 12 V supply is therefore suitable, provided that the wiring and electrical references are correctly implemented.
 The manufacturer specifies a typical humidity accuracy of ±3 percentage points of relative humidity over 0–90% RH at 0–40 °C.
 
-Rotational speed (n) and electrical power (Pel)
+- Rotational speed (n) and electrical power (Pel):
+
 If the Noctua motor and electronics are used, rotational speed will be obtained from the tachometer output. The tachometer output and PWM control input are separate signals.
 Noctua specifies an open-collector tachometer output with two pulses per revolution. A pull-up resistor to a voltage compatible with the acquisition input is therefore required. The tachometer wire must not be described as an independently generated 5 V square-wave output.
 For two pulses per revolution:
@@ -210,6 +212,19 @@ Current may be determined using a precision shunt resistor and a differential vo
 For the proposed 0.1 Ω shunt, a current of 0.10 A produces a voltage drop of 10 mV. The acquisition range and wiring must therefore be suitable for low-level voltage measurements.
 The shunt tolerance alone does not determine current-measurement uncertainty. The voltage-input offset, gain error, noise, resistor temperature dependence and connections must also be considered.
 The NI-9205 has a maximum selectable input range of ±10 V. Therefore, the nominal 12 V fan supply must not be measured directly on this range. A characterised voltage divider, a suitable higher-range input or a separate voltage-measuring instrument is required. Fan terminal voltage will be measured through a characterised voltage divider connected to an NI-9205 input. Current will be determined from the differential voltage across the shunt resistor. Divider ratio, resistor specifications, grounding and measurement uncertainty will be established during detailed design.
+
+- Data-acquisition architecture
+
+| Component | Function |
+|---|---:|
+| cDAQ-9174 | USB chassis with four module slots and internal counters |
+| NI-9211 | Thermocouple acquisition with cold-junction compensation |
+| NI-9205 | Analogue voltage acquisition for humidity, shunt voltage and appropriately conditioned signals |
+| NI-9401 | Digital interface for tachometer pulses |
+| Computer | Data logging, instrument communication and post-processing |
+
+
+
 
 ### 6.3. ISO 5801:2019 application to the axial fan
 
