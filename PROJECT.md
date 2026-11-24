@@ -1,6 +1,6 @@
 # INDEX:
 
-## 1. Team Organisation
+## 1. Team Organization
 ### 1.1. Role Assignments
 ### 1.2. Group Regulations
 ## 2. Axial Fan Introduction: Noctua NF-A12x25 PWM
@@ -11,10 +11,11 @@
 ## 4. Applications and Examples from the web
 ### 4.1. Main Applications 
 ### 4.2. Examples from the web
+## 5. CFD planning
 
 ---
 
-## 1. Team Organisation
+## 1. Team Organization
 To ensure efficient and effective work, the project has been structured into three distinct categories to be covered by group members, in accordance with the project guidelines. Certain rules and regulations have also been established to help maintain an equitable and professional work pace.
 
 ### 1.1. Role Assignments
@@ -70,3 +71,61 @@ Below, three exampels of real-world applications documented online are presented
 - **Use with restrictive radiators (for instance, Arctic Liquid Freezer II 240):** Various hardware reviews demonstrate the use of the NF-A12x25 alongside the included NA-AVG1 silicone anti-vibration gasket. This gasket seals the gap between the fan frame and the radiator, channeling all static pressure through the fins without side leakage.
 - **Use as a case fan behind filters (for instance, DeepCool CH510 Mesh):** Acoustic tests prove its effectiveness as a primary intake fan. Thanks to its aerodynamic design, it maintains consistent airflow into the system while keeping noise levels very low (around 31 dB(A) at 1100 RPM).
 - **Replacement on tower-style heatsinks (for instance, Noctua NH-U12A / DeepCool AK400).** It is frequently documented as a replacement for standard fans, leveraging the minimal 0.5 mm clearance between the blade tips and the frame (made possible by the Sterrox material). This prevents turbulence and improves direct heat dissipation through the processor's aluminum fin stack.
+
+## 5. CFD Planning
+Three different types of simulations will be executed to aid and verify our design choices. These will be the following: 
+
+### 5.1. Airfoil simulations:
+CAD description:
+The CAD will be the selected airfoil with it’s design characteristics. Including profile (NACA 65), chord measurements and design length.
+
+Mesh description:
+The mesh will be designed balancing two factors. On one side we aim to obtain the necessary accuracy and definition of results to verify and aid our design. On the other side we want to optimize computational cost so that we are more nimble in our iterative design process. This is why we will discretize different parts of our mesh.
+
+Surrounding our airfoil and following it’s closest flow downstream we will create a region refinement. This zone will use level 4 refinement, and will allow us to understand how the flow behaves after interacting with the fan. 
+
+It will also be necessary to refine the surface of the airfoil and the boundary layer around it. For the surface we will use level 5. For the boundary layer we will use a changing refinement, in SimScale this tool is called “Inflate Boundary Layer”, and will allow us to create refinement that decreases when getting further away from our airfoil. 
+
+Boundary conditions
+The most important boundary condition of these simulations will be the free-stream velocity and it’s direction. The axial velocity in the fan is 1,537m/s. Due to the chosen angle of attack the components of our velocity boundary condition will be the following. 
+Vx = 1,516 m/s
+Vy = 0.2527 m/s
+The velocity boundary condition will be applied in the surrounding walls of our domain. 
+Because of the aims of this simulation we are able to apply symmetry boundary conditions in the front and back walls of the domain. This is an efficient way of reducing computational cost.
+The airfoil itself will have a wall boundary condition (No-slip). We will use Wall-Functions to resolve the flow close to our surface. 
+
+
+
+### 5.2. Cascade Simulations:
+CAD description: 
+This second simulation will use the same CAD model as the first one. Our airfoil of choice with all it’s characteristics. In this case we will introduce the airfoil at the stagger angle (77.896°). 
+
+Mesh description
+The mesh for this simulation will be similar to the mesh described before, but due to the direction of our flow we will modify the geometry of the region refinement. 
+
+Boundary conditions
+
+Because we aim to understand the effects on the airflow of the cascade of airfoils we will have to set up periodic boundary conditions on the top and bottom of our domain. This way the influence on the state of the flow produced by one fin affects the next, therefore providing us with information on the full rotation of our fan. 
+
+The velocity inlet boundary condition will be set up at a relative angle of (b1 (80,536°) - Stagger (77.896°) = 2.64°. Therefore:
+Vx =0.070 m/s
+Vy = 1.53536 m/s
+
+Symmetrys will be applied in the front and back sections of our domain. The same way as in the previous types of simulations. 
+
+In this case we will use the pressure outlet boundary condition in the most downstream section of our domain. 
+
+### 5.3. Full model simulations:
+CAD description:
+The full model simulations will incorporate the CAD of the full fan. This includes casing, center fan structure and the designed 9 airfoils.
+
+Mesh description
+Meshing will be developed with the same objectives in mind, but due to the complexity of this simulations it will also require an iterative process to understand the shortcomings of our initial meshes. 
+
+Boundary conditions
+A velocity inlet will be defined with the mentioned axial velocity. Our idea is to iterate with this velocity to find our ideal performance points. A pressure outlet will also be defined. No-slip conditions will be applied on our airfoils and fan structures, therefore setting them up as walls. The rotating speed of the reference frame will also be applied, therefore simulation the movement in our fan.
+
+
+Each of these types of simulations will be performed through an iterative process. We will do our first runs using the designed parameters and will subsequently iterate until reaching the desired performance outcomes. We will also perform Grid Convergence Studies to determine if our results are converged. 
+
+
