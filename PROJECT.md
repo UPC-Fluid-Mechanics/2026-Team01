@@ -163,6 +163,16 @@ To test the design of the fan and validate the CFD results we must design the ex
 
 <img width="571" height="458" alt="Screenshot 2026-11-24 231434" src="https://github.com/user-attachments/assets/5ac8492c-7c1f-42aa-8a94-26781bfb776b" />
 
+| Quantity | Symbol and Unit | Purpose |
+| :--- | :--- | :--- |
+| Differential pressure across the nozzles | $\Delta p_n$, $\text{Pa}$ | Determine airflow rate |
+| Chamber pressure relative to ambient | $p_{e3}$, $\text{Pa}$ | Determine fan pressures according to the test configuration |
+| Air temperature | $T$, $\text{K}$ or $^\circ\text{C}$ | Determine air properties |
+| Atmospheric pressure | $p_a$, $\text{Pa}$ | Determine density and absolute pressures |
+| Relative humidity | $h_{\text{rel}}$, $\%$ | Account for moist-air composition |
+| Rotational speed | $n$, $\text{rpm}$ | Control and document the test condition |
+| Electrical power input | $P_{el}$, $\text{W}$ | Determine electrical consumption and overall efficiency |
+| Torque, if mechanical power is measured | $\tau$, $\text{N}\cdot\text{m}$ | Determine shaft power |
 
 ### 6.2. Proposed instrumentation for measuring and data acquisition
 - Flow rate measurement
@@ -229,6 +239,15 @@ A scheme lay out for understanding the connectivity of the quantity mesurments a
 
 
 ### 6.3. ISO 5801:2019 application to the axial fan
+
+A. Fan Installation Categories and Project Selection (Clauses 5 & 6)
+UNE-EN ISO 5801:2019 classifies fan test configurations into four standardized installation categories depending on the presence of ducting at the inlet and outlet:
+Category A: Free inlet and free outlet (no ducts connected to either side).
+Category B: Free inlet and ducted outlet (standardized airway on the discharge side).
+Category C: Ducted inlet and free outlet (standardized airway on the suction side).
+Category D: Ducted inlet and ducted outlet (standardized airways on both sides).
+Category for our project:
+Since the GPU fan is tested without a heat sink or attached ducts (drawing air from an open ambient environment and discharging directly to the atmosphere), our mounting configuration corresponds to Installation Category A (Free inlet, free outlet), tested using a Type 2 / Category A Inlet Chamber.
 
 
 
